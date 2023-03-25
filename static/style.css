@@ -1,0 +1,13 @@
+center {
+  position: relative;
+  top: 150px;
+}
+body {
+  background-color: #101424;
+}
+.cover-heading {
+  color: white;
+}
+.lead{
+  color:white;
+}

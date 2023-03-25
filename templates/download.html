@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %} Download {% endblock %} <!--can also set values from python-->
+
+{% block content %}
+<style>
+  .video-download-div {
+    position: relative;
+    top: -70px;
+    height: 500px;
+    margin: 20px;
+    border: 5px solid;
+    background-color: #313338;
+    overflow: hidden; /* image won't fly out of div*/
+    border-radius: 25px;
+  }
+  .video-title {
+    padding-top: 10px;
+    color: white;
+  }
+  .thumbnail-image {
+    height: 200px;
+    width: 300px;
+    position: relative;
+    top: 10px;
+    border-radius: 25px;
+  }
+  .settings-div{
+    width: 200px;
+    background-color: #0f0f0f;
+    padding: 20px;
+    position: relative;
+    top: 60px;
+    border-radius: 25px;
+  }
+</style>
+
+<center>
+  <form action="#" method="post" >
+    <div class="video-download-div">
+      <h2 class="video-title">{{yt_title}}</h2>
+      <img src={{yt_image}} class="thumbnail-image"> <!--displays image-->
+      <div class="settings-div">
+        <select id="download-options" name="download-options" class="dropdown-resolution-select">
+        
+        </select>
+        <p><input type="submit" value="submit" class="btn btn-success mt-3"></p>
+      </div>
+    </div>
+  </form>
+</center>
+
+
+<!--make adjustable dropdown--> 
+
+<script type="text/javascript">
+    let word ="{{available_res}}";
+    const dropdown_data= word.split(' ');
+      
+    const res_dropdown = document.getElementById("download-options");
+
+    for (let i = 0; i < dropdown_data.length; i++) {
+      let option = document.createElement("option");
+      option.setAttribute('value', dropdown_data[i]);
+    
+      let optionText = document.createTextNode(dropdown_data[i]);
+      option.appendChild(optionText);
+    
+      res_dropdown.appendChild(option);
+    }
+
+</script>
+
+
+
+{% endblock %}
